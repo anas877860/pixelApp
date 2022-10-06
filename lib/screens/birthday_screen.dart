@@ -148,7 +148,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
               ),
             ),
             kHeight(74),
-            assetImage(bottomLeftElement),
+            assetImage(bottomLeftElement,),
           ],
         ),
       ),

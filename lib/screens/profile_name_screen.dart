@@ -44,7 +44,7 @@ class ProfileNameScreen extends StatelessWidget {
                   SizedBox(
                       height: 202,
                       width: double.infinity,
-                      child: assetImage(undrawFireworks)),
+                      child: assetImage(undrawFireworks,)),
                   kHeight(30),
                   TextField(
                     controller: _nameController,
@@ -82,7 +82,7 @@ class ProfileNameScreen extends StatelessWidget {
               ),
             ),
             kHeight(87),
-            assetImage(bottomLeftElement),
+            assetImage(bottomLeftElement,),
           ],
         ),
       ),

@@ -64,7 +64,7 @@ class UploadPicScreen extends StatelessWidget {
                               left: 111,
                                 child: CircleAvatar(
                               radius: 16,
-                              child: assetImage(boxCamera),
+                              child: assetImage(boxCamera,),
                             ))
                           ],
                         ),
@@ -77,7 +77,7 @@ class UploadPicScreen extends StatelessWidget {
               ),
             ),
             kHeight(74),
-            assetImage(bottomLeftElement),
+            assetImage(bottomLeftElement,),
           ],
         ),
       ),
