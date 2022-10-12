@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_app/constants/constants.dart';
-import 'package:pixel_app/screens/profile_name_screen.dart';
+import 'package:pixel_app/screens/sign_up_screen/sign_up_screen.dart';
+import 'package:pixel_app/screens/widgets/widgets.dart';
 
-import 'package:pixel_app/widgets/widgets.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+
+class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
   final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -20,31 +19,29 @@ class SignUpScreen extends StatelessWidget {
           children: [
             SizedBox(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(19.0, size.height * 0.11, 19, 0),
+                padding: EdgeInsets.fromLTRB(19.0, size.height * 0.13, 19, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    reusableText("Create account", 24, FontWeight.w700,
-                        const Color(0XFF434343)),
-                    // assetImage(
-                    //   createAccount,
-                    // ),
-
-                    reusableText("Start exploring each pixels", 16,
-                        FontWeight.w400, const Color(0XFF434343)),
-                    // assetImage(exploringPixel),
-                    kHeight(30),
+                    reusableText(
+                      "Login to account",
+                      24,
+                      FontWeight.bold,
+                      const Color(0XFF434343),
+                    ),
+                    kHeight(5),
+                    reusableText("Continue by login to you account", 16,
+                        FontWeight.normal, const Color(0XFF434343)),
+                    kHeight(50),
                     textFieldName("Your username"),
                     kHeight(10),
-                    inputTextField(_userNameController, false),
+                    InputTextField(controller: _userNameController, isPasswordView: false),
+                    // inputTextField(_userNameController,false),
                     kHeight(10),
                     textFieldName("Your Password"),
                     kHeight(10),
-                    inputTextField(_passwordController, false),
-                    kHeight(10),
-                    textFieldName("Confirm Password"),
-                    kHeight(10),
-                    inputTextField(_confirmPasswordController, true),
+                    InputTextField(controller:_passwordController, isPasswordView:true),
+                    // inputTextField(_passwordController,true),
                     kHeight(10),
                     RichText(
                       text: const TextSpan(
@@ -69,45 +66,43 @@ class SignUpScreen extends StatelessWidget {
                     kHeight(5),
                     reusableText("Privacy policy", 12, FontWeight.w600,
                         const Color(0xFF6B6B6B)),
-                    kHeight(20),
+                    kHeight(35),
                     ReusableElevatedButton(
                       size: size,
-                      text: "Create account",
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProfileNameScreen()),
-                            (route) => false);
-                      },
+                      text: "Login",
+                      onPressed: () {}, isButtonWidth: false,
                     ),
-                    kHeight(10),
+                    kHeight(20),
                     assetImage(
                       signInGoogle,
                     ),
-                    kHeight(20),
+                    kHeight(60),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        reusableText("Already have account ?", 16,
+                        reusableText("Didn’t have account ?", 16,
                             FontWeight.w400, const Color(0XFF434343)),
                         // assetImage(
-                        //   allReadyAccount,
+                        //   didAccount,
                         // ),
 
                         TextButton(
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen()));
                             },
-                            child: reusableText("Sign in", 16, FontWeight.w600,
-                                const Color(0XFF434343)))
+                            child: reusableText("Sign up", 16, FontWeight.w600,
+                                const Color(0XFF434343))),
                         // GestureDetector(
                         //     onTap: () {
-                        //       Navigator.pop(context);
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => SignUpScreen()));
                         //     },
-                        //     child: assetImage(
-                        //       signIn,
-                        //     )),
+                        //     child: assetImage(signUp)),
                       ],
                     ),
                   ],

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:pixel_app/constants/constants.dart';
-import 'package:pixel_app/widgets/widgets.dart';
+import 'package:pixel_app/screens/screen_main_page/screen_main_page.dart';
+import 'package:pixel_app/screens/widgets/widgets.dart';
+
 import 'package:table_calendar/table_calendar.dart';
 
 class UploadPicScreen extends StatelessWidget {
@@ -60,24 +61,39 @@ class UploadPicScreen extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              top: 90,
-                              left: 111,
+                                top: 90,
+                                left: 111,
                                 child: CircleAvatar(
-                              radius: 16,
-                              child: assetImage(boxCamera,),
-                            ))
+                                  radius: 16,
+                                  child: assetImage(
+                                    boxCamera,
+                                  ),
+                                ))
                           ],
                         ),
                       ),
                     ),
                   ),
                   ReusableElevatedButton(
-                      size: size, text: "Next", onPressed: () {}),
+                    size: size,
+                    text: "Next",
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ScreenMainPage()),
+                          (route) => false);
+                    },
+                    buttonHeight: 49,
+                    isButtonWidth: false,
+                  ),
                 ],
               ),
             ),
             kHeight(74),
-            assetImage(bottomLeftElement,),
+            assetImage(
+              bottomLeftElement,
+            ),
           ],
         ),
       ),

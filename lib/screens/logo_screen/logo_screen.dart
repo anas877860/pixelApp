@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_app/constants/constants.dart';
-import 'package:pixel_app/screens/login_screen.dart';
+import 'package:pixel_app/screens/login_screen/login_screen.dart';
+import 'package:pixel_app/screens/widgets/widgets.dart';
 
 
-import 'package:pixel_app/widgets/widgets.dart';
+
 
 class LogoScreen extends StatelessWidget {
   const LogoScreen({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class LogoScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
+              }, isButtonWidth:false,
             ),
             Row(children: [
               assetImage(

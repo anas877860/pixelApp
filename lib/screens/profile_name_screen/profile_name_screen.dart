@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pixel_app/screens/birthday_screen.dart';
+import 'package:pixel_app/screens/birthday_screen/birthday_screen.dart';
 
 import 'package:pixel_app/constants/constants.dart';
-import 'package:pixel_app/widgets/widgets.dart';
+import 'package:pixel_app/screens/widgets/widgets.dart';
+
 
 class ProfileNameScreen extends StatelessWidget {
   ProfileNameScreen({Key? key}) : super(key: key);
@@ -76,8 +77,8 @@ class ProfileNameScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BirthdayScreen()));
-                      }),
+                                builder: (context) => const BirthdayScreen()));
+                      }, isButtonWidth:false,),
                 ],
               ),
             ),

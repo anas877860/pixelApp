@@ -9,6 +9,19 @@ const signInGoogle = "assets/images/google.png";
 const bottomLeftElement = "assets/images/bottom_left_element.png";
 const undrawFireworks = "assets/images/undraw_fireworks_re_2xi7 1.png";
 const boxCamera = "assets/images/bxs_camera.png";
+const homeIcon = "assets/icons/homeIcon.png";
+const uploadIcon = "assets/icons/uploadIcon.png";
+const downloadIcon = "assets/icons/downloadIcon.png";
+const profilePic = "assets/images/profilePic.png";
+const natureProfilePic = "assets/images/natureProfilePic.png";
+const natureImage = "assets/images/natureImage.png";
+const natureComment = "assets/images/comment.png";
+const natureLike = "assets/images/like.png";
+const errorOwl = "assets/images/errorOwl.png";
+const backIcon = "assets/icons/backIcon.png";
+const natureDetailImage = "assets/images/natureDetailImage.png";
+ const commentProfile = "assets/images/commentProfile.png";
+ const downloadImageButton="assets/images/downloadImageButton.png";
 
 Image assetImage(
   String path,
@@ -16,48 +29,15 @@ Image assetImage(
     Image.asset(
       path,
     );
-TextField inputTextField(TextEditingController controller, bool isPassword) {
-  return TextField(
-    controller: controller,
-    decoration: InputDecoration(
-      // suffixText: "View",
-      // suffixStyle: const TextStyle(
-      //   fontSize: 12,
-      //   fontWeight: FontWeight.w400,
-      //   color: Color(0XFF787878),
-      // ),
-      suffix: isPassword
-          ? const Text(
-              "View",
-              style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0XFF787878)),
-            )
-          : null,
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(3),
-        borderSide: const BorderSide(
-          width: 1.5,
-          color: Color(0XFFBEBEBE),
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(3.0),
-        borderSide: const BorderSide(
-          width: 3,
-          color: Colors.grey,
-        ),
-      ),
-    ),
-  );
-}
 
 Text textFieldName(String text) {
   return Text(text,
-      style: const TextStyle(
-        fontSize: 14,
-        color: Color(0XFF656565),
+      style: GoogleFonts.poppins(
+        textStyle: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: Color(0XFF656565),
+        ),
       ));
 }
 
@@ -86,3 +66,4 @@ Text reusableText(
 }
 
 const blueColor = Color(0XFF0070C1);
+const backgroundColor = Color(0XFFEEF8F0);

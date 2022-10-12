@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pixel_app/screens/splash_screen.dart';
+import 'package:pixel_app/constants/constants.dart';
+import 'package:pixel_app/screens/splash_screen/splash_screen.dart';
 
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: backgroundColor,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the

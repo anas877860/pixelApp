@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_app/constants/constants.dart';
 
-import 'package:pixel_app/screens/logo_screen.dart';
+import 'package:pixel_app/screens/logo_screen/logo_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

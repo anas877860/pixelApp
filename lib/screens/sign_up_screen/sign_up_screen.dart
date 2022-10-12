@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_app/constants/constants.dart';
-import 'package:pixel_app/screens/sign_up_screen.dart';
+import 'package:pixel_app/screens/profile_name_screen/profile_name_screen.dart';
+import 'package:pixel_app/screens/widgets/widgets.dart';
 
-import 'package:pixel_app/widgets/widgets.dart';
-
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key? key}) : super(key: key);
   final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -18,27 +19,38 @@ class LoginScreen extends StatelessWidget {
           children: [
             SizedBox(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(19.0, size.height * 0.13, 19, 0),
+                padding: EdgeInsets.fromLTRB(19.0, size.height * 0.11, 19, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    reusableText(
-                      "Login to account",
-                      24,
-                      FontWeight.bold,
-                      const Color(0XFF434343),
-                    ),
-                    kHeight(5),
-                    reusableText("Continue by login to you account", 16,
-                        FontWeight.normal, const Color(0XFF434343)),
-                    kHeight(50),
+                    reusableText("Create account", 24, FontWeight.w700,
+                        const Color(0XFF434343)),
+                    // assetImage(
+                    //   createAccount,
+                    // ),
+
+                    reusableText("Start exploring each pixels", 16,
+                        FontWeight.w400, const Color(0XFF434343)),
+                    // assetImage(exploringPixel),
+                    kHeight(30),
                     textFieldName("Your username"),
                     kHeight(10),
-                    inputTextField(_userNameController,false),
+                    InputTextField(
+                        controller: _userNameController, isPasswordView: false),
+                    // inputTextField(_userNameController, false),
                     kHeight(10),
                     textFieldName("Your Password"),
                     kHeight(10),
-                    inputTextField(_passwordController,true),
+                    InputTextField(
+                        controller: _passwordController, isPasswordView: false),
+                    // inputTextField(_passwordController, false),
+                    kHeight(10),
+                    textFieldName("Confirm Password"),
+                    kHeight(10),
+                    InputTextField(
+                        controller: _confirmPasswordController,
+                        isPasswordView: true),
+                    // inputTextField(_confirmPasswordController, true),
                     kHeight(10),
                     RichText(
                       text: const TextSpan(
@@ -63,43 +75,46 @@ class LoginScreen extends StatelessWidget {
                     kHeight(5),
                     reusableText("Privacy policy", 12, FontWeight.w600,
                         const Color(0xFF6B6B6B)),
-                    kHeight(35),
+                    kHeight(20),
                     ReusableElevatedButton(
                       size: size,
-                      text: "Login",
-                      onPressed: () {},
+                      text: "Create account",
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfileNameScreen()),
+                            (route) => false);
+                      },
+                      isButtonWidth: false,
                     ),
                     kHeight(20),
                     assetImage(
                       signInGoogle,
                     ),
-                    kHeight(40),
+                    kHeight(30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        reusableText("Didn’t have account ?", 16,
+                        reusableText("Already have account ?", 16,
                             FontWeight.w400, const Color(0XFF434343)),
                         // assetImage(
-                        //   didAccount,
+                        //   allReadyAccount,
                         // ),
 
                         TextButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignUpScreen()));
+                              Navigator.pop(context);
                             },
-                            child: reusableText("Sign up", 16, FontWeight.w600,
-                                const Color(0XFF434343))),
+                            child: reusableText("Sign in", 16, FontWeight.w600,
+                                const Color(0XFF434343)))
                         // GestureDetector(
                         //     onTap: () {
-                        //       Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //               builder: (context) => SignUpScreen()));
+                        //       Navigator.pop(context);
                         //     },
-                        //     child: assetImage(signUp)),
+                        //     child: assetImage(
+                        //       signIn,
+                        //     )),
                       ],
                     ),
                   ],
