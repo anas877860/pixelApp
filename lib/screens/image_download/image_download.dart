@@ -7,8 +7,16 @@ import 'package:pixel_app/screens/widgets/comment_text_field.dart';
 import 'package:pixel_app/screens/widgets/reusable_icon_text.dart';
 
 class ImageDownloadScreen extends StatelessWidget {
-  ImageDownloadScreen({Key? key}) : super(key: key);
+  ImageDownloadScreen({Key? key, required this.profileImage, required this.tags, required this.backgroundImage, required this.likes, required this.name, required this.year, required this.monthDay, required this.time}) : super(key: key);
   ValueNotifier<bool> isLoadMoreNotifier = ValueNotifier(false);
+ final String profileImage;
+   final List<String> tags;
+   final String backgroundImage;
+   final String likes;
+   final String name;
+   final String year;
+   final String monthDay;
+   final String time;
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +38,23 @@ class ImageDownloadScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: 20, top: size.height * 0.065),
               child: Row(
                 children: [
-                  const CircleAvatar(
+                 CircleAvatar(
                     radius: 27.62,
-                    backgroundImage: AssetImage(natureProfilePic),
+                    backgroundImage: NetworkImage(profileImage),
                   ),
                   kWidth(14),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      reusableText("John Doe", 23.48, FontWeight.w500,
+                      reusableText(name, 23.48, FontWeight.w500,
                           const Color(0XFF3E3E3E)),
                       Row(
                         children: [
-                          reusableText("Sep 24 2022", 13.81, FontWeight.w500,
+                          reusableText("$monthDay $year", 13.81, FontWeight.w500,
                               const Color(0XFF575757)),
                           kWidth(18),
                           reusableText(
-                            "01:10 PM",
+                            time,
                             13.81,
                             FontWeight.w500,
                             const Color(0XFF575757),
@@ -65,14 +73,14 @@ class ImageDownloadScreen extends StatelessWidget {
                   Row(
                     children: [
                       reusableText(
-                        "#Nature",
+                      '#${tags[0]}',
                         18,
                         FontWeight.w400,
                         const Color.fromRGBO(0, 112, 193, 0.49),
                       ),
                       kWidth(7),
                       reusableText(
-                        "#Mountains",
+                         '#${tags[1]}',
                         18,
                         FontWeight.w400,
                         const Color.fromRGBO(0, 112, 193, 0.49),
@@ -82,7 +90,7 @@ class ImageDownloadScreen extends StatelessWidget {
                   Row(
                     children: [
                       reusableText(
-                        "#Nature_lover",
+                        '#${tags[2]}',
                         18,
                         FontWeight.w400,
                         const Color.fromRGBO(0, 112, 193, 0.49),
@@ -97,9 +105,9 @@ class ImageDownloadScreen extends StatelessWidget {
               children: [
                 Container(
                   height: 375,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(natureDetailImage))),
+                          image: NetworkImage(backgroundImage),fit: BoxFit.cover)),
                 ),
                 Positioned(
                   right: 20,
@@ -111,8 +119,8 @@ class ImageDownloadScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20, top: 29.08, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  ReusableIconText(text: "1.5K", icon: natureLike),
+                children:  [
+                  ReusableIconText(text: likes, icon: natureLike),
                   // ReusableElevatedButton(
                   //     fontSize: 17,
                   //     fontWeight: FontWeight.w600,

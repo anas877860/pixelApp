@@ -22,7 +22,8 @@ const backIcon = "assets/icons/backIcon.png";
 const natureDetailImage = "assets/images/natureDetailImage.png";
  const commentProfile = "assets/images/commentProfile.png";
  const downloadImageButton="assets/images/downloadImageButton.png";
-
+  const url = 'https://dummyapi.io/data/v1/post?limit=10';
+   final apiKey= {'app-id':'6347d751d567684dd8a1d699'};
 Image assetImage(
   String path,
 ) =>

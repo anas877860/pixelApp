@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_app/constants/constants.dart';
+import 'package:pixel_app/screens/search_home/screen_home.dart';
 import 'package:pixel_app/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:pixel_app/screens/widgets/widgets.dart';
-
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final snackBar = const SnackBar(
+    content: Text("UserName and password doesn't match or empty"),
+  );
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -35,12 +39,14 @@ class LoginScreen extends StatelessWidget {
                     kHeight(50),
                     textFieldName("Your username"),
                     kHeight(10),
-                    InputTextField(controller: _userNameController, isPasswordView: false),
+                    InputTextField(
+                        controller: _userNameController, isPasswordView: false),
                     // inputTextField(_userNameController,false),
                     kHeight(10),
                     textFieldName("Your Password"),
                     kHeight(10),
-                    InputTextField(controller:_passwordController, isPasswordView:true),
+                    InputTextField(
+                        controller: _passwordController, isPasswordView: true),
                     // inputTextField(_passwordController,true),
                     kHeight(10),
                     RichText(
@@ -70,7 +76,10 @@ class LoginScreen extends StatelessWidget {
                     ReusableElevatedButton(
                       size: size,
                       text: "Login",
-                      onPressed: () {}, isButtonWidth: false,
+                      onPressed: () {
+                        checkUser(context);
+                      },
+                      isButtonWidth: false,
                     ),
                     kHeight(20),
                     assetImage(
@@ -117,4 +126,25 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+
+  checkUser(context) {
+    final userName = _userNameController.text;
+    final userPassword = _passwordController.text;
+    if (userName == "anas" && userPassword == "1234") {
+      logIn(context);
+    } else {
+      return ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+}
+
+logIn(context) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('email', 'useremail@gmail.com');
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SearchScreenHome(),
+      ),
+      (route) => false);
 }
